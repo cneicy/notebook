@@ -1,0 +1,52 @@
+﻿<Window x:Class="notebook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:notebook"
+        mc:Ignorable="d"
+        Title="文本编辑器" Height="720" Width="1080">
+    <Window.Resources>
+        <local:PercentageConverter x:Key="PercentageConverter" />
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Commands.Save" Executed="MainWindow_OnSaveExecuted" />
+        <!--<CommandBinding Command="local:Commands.Withdraw" Executed = "MainWindow_OnWithdrawExecuted" />
+        <CommandBinding Command="local:Commands.Restore" Executed = "MainWindow_OnRestoreExecuted" />-->
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="local:Commands.Save" />
+        <!--<KeyBinding Key="Z" Modifiers="Control" Command="local:Commands.Withdraw"/>
+        <KeyBinding Key="Y" Modifiers="Control" Command="local:Commands.Restore"/>-->
+    </Window.InputBindings>
+    <Grid>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBox Name="TextBox"
+                     Width="{
+                    Binding RelativeSource={RelativeSource AncestorType=Window}, 
+                    Path=ActualWidth, 
+                    Converter={StaticResource PercentageConverter}, 
+                    ConverterParameter=0.9}"
+                     Height="{
+                     Binding RelativeSource={RelativeSource AncestorType=Window},
+                     Path=ActualHeight, 
+                     Converter={StaticResource PercentageConverter}, 
+                     ConverterParameter=0.9}"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     AcceptsTab="True" TextChanged="TextBox_OnTextChanged">
+            </TextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <CheckBox Width="20" Height="20" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked">AutoSave</CheckBox>
+            <Label>Auto Save</Label>
+            <Button Width="100" Height="40"
+                    Click="LoadBtn_OnClick">
+                Load
+            </Button>
+            <Button Width="100" Height="40" Click="SaveBtn_OnClick">Save</Button>
+            
+        </StackPanel>
+    </Grid>
+</Window>

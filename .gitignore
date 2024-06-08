@@ -1,0 +1,140 @@
+# 忽略Visual Studio临时文件和用户特定文件
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]nyCPU/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+ 
+# 默认忽略的文件
+/shelf/
+/workspace.xml
+
+# Rider 忽略的文件
+/modules.xml
+/.idea.notebook.iml
+/contentModel.xml
+/projectSettingsUpdater.xml
+
+# 基于编辑器的 HTTP 客户端请求
+/httpRequests/
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# 忽略用户特定文件
+*.user
+*.suo
+*.userprefs
+ 
+# 忽略NuGet Packages
+packages/*
+ 
+# 忽略ReSharper和其他第三方工具生成的文件
+_ReSharper*/
+*.ReSharper
+*.DotSettings
+ 
+# 忽略所有.vs文件夹，这是Visual Studio Code的配置文件夹
+.vs/
+ 
+# 忽略所有的NUPKG文件，这是NuGet包文件
+*.nupkg
+ 
+# 忽略所有的MSI安装文件
+*.msi
+ 
+# 忽略所有的ZIP文件，可能是从旧版本的WPF项目升级来的
+*.zip
+ 
+# 忽略所有的pdb文件，这是调试符号文件
+*.pdb
+ 
+# 忽略所有的IO.WPF工具生成的文件和目录
+.io/
+ 
+# 忽略所有的UWP工具生成的文件和目录
+.uwp/
+ 
+# 忽略所有的VSTS构建文件
+*.vstsdev.exe
+ 
+# 忽略所有的IPCH文件和管理文件，它们是Visual Studio用于IntelliSense的
+*.IPCH/
+*.IntelliSense/
+ 
+# 忽略所有的Backup文件和临时文件
+*.bak
+*.tmp
+ 
+# 忽略所有的日志文件
+*.log
+ 
+# 忽略所有的BACKUP文件夹和临时文件夹
+[Bb]ackup*/
+[Tt]emp*/
+ 
+# 忽略所有的DDL文件，它们是数据定义语言文件，通常用于数据库迁移
+*.ddl
+ 
+# 忽略所有的VCS文件，这是Visual Studio用于版本控制的配置文件
+*.vcs
+ 
+# 忽略所有的SUO和USER文件，它们是Visual Studio的用户特定配置
+*.suo
+*.user
+*.userprefs
+ 
+# 忽略所有的NuGet目录和文件
+NuGet.Config
+packages/
+ 
+# 忽略所有的MSBuild目录和文件
+_ReSharper*/
+*.ReSharper
+*.DotSettings
+ 
+# 忽略所有的Visual Studio Code目录和文件
+.vscode/
+ 
+# 忽略所有的Bower目录和文件
+bower_components/
+ 
+# 忽略所有的Grunt目录和文件
+node_modules/
+ 
+# 忽略所有的Gulp目录和文件
+build/
+ 
+# 忽略所有的Babel目录和文件
+.babelrc
+ 
+# 忽略所有的Flow目录和文件
+.flowconfig
+ 
+# 忽略所有的EditorConfig文件
+.editorconfig
+ 
+# 忽略所有的Settings文件
+*.settings
+ 
+# 忽略所有的Yarn目录和文件
+yarn.lock
+ 
+# 忽略所有的JSHint配置文件
+.jshintrc
+ 
+# 忽略所有的JSHint目录和文件
+.jshintignore
+ 
+# 忽略所有的npm目录和文件
+npm-debug.log*
+ 
+# 忽略所有的ESLint目录和文件
+.eslintrc
+.eslintignore
+ 
+# 忽略所有的stylelint目录和文件
