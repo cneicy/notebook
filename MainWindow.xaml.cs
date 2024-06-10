@@ -24,7 +24,7 @@ public partial class MainWindow
             var saveFileDialog = new SaveFileDialog
             {
                 Filter = "文本文件|*.txt|所有文件|*.*",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 Title = "保存文本文件"
             };
             if (saveFileDialog.ShowDialog() == true)
@@ -41,12 +41,12 @@ public partial class MainWindow
         }
     }
 
-    private void LoadTextPath()
+    private void Load()
     {
         var openFileDialog = new OpenFileDialog
         {
             Filter = "文本文件|*.txt|所有文件|*.*",
-            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             Title = "打开文本文件",
             Multiselect = false
         };
@@ -65,7 +65,7 @@ public partial class MainWindow
 
     private void LoadBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        LoadTextPath();
+        Load();
     }
 
     private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -104,6 +104,7 @@ public partial class MainWindow
             textBox.FontSize = fontSize;
         }
     }
+    
 }
 
 public static class Commands
