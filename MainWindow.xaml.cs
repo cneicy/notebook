@@ -14,6 +14,11 @@ public partial class MainWindow
     public MainWindow()
     {
         InitializeComponent();
+        if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\temp.txt"))
+        {
+            TextBox.Text =
+                File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\temp.txt");
+        }
     }
 
     private void Save()
@@ -35,6 +40,7 @@ public partial class MainWindow
 
         if (_textPath == null) return;
         File.WriteAllText(_textPath, TextBox.Text);
+        File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\temp.txt");
         if (Title.Contains('*'))
         {
             Title = "正在编辑: " + _textPath;
@@ -70,6 +76,14 @@ public partial class MainWindow
 
     private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
     {
+        if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+"\\temp.txt"))
+        {
+            File.Create(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\temp.txt");
+        }
+        else
+        {
+            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\temp.txt",TextBox.Text);
+        }
         if (_textPath is null) return;
         if (_saveTrigger) Save();
         var temp = File.ReadAllText(_textPath);
