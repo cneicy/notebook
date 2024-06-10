@@ -9,10 +9,7 @@ namespace notebook;
 public partial class MainWindow
 {
     private static string? _textPath;
-
-    //private List<string> _contentTemp = [];
-    //private int _index;
-    private bool _saveTrigger = false;
+    private bool _saveTrigger;
 
     public MainWindow()
     {
@@ -37,8 +34,6 @@ public partial class MainWindow
         }
 
         if (_textPath == null) return;
-        //_contentTemp.Add(TextBox.Text);
-        //_index=_contentTemp.Count-1;
         File.WriteAllText(_textPath, TextBox.Text);
         if (Title.Contains('*'))
         {
@@ -59,7 +54,6 @@ public partial class MainWindow
         if (openFileDialog.ShowDialog() != true) return;
         _textPath = openFileDialog.FileName;
         Title = "正在编辑: " + _textPath;
-        //_contentTemp = [];
         TextBox.Text = File.ReadAllText(_textPath);
     }
 
@@ -89,18 +83,7 @@ public partial class MainWindow
     {
         Save();
     }
-
-    /*private void MainWindow_OnWithdrawExecuted(object sender, ExecutedRoutedEventArgs e)
-    {
-        TextBox.Text = _contentTemp[_index];
-        _index--;
-    }
-    private void MainWindow_OnRestoreExecuted(object sender, ExecutedRoutedEventArgs e)
-    {
-        if (_index+1 > _contentTemp.Count - 1) return;
-        _index++;
-        TextBox.Text = _contentTemp[_index];
-    }*/
+    
     private void ToggleButton_OnChecked(object sender, RoutedEventArgs e)
     {
         _saveTrigger = true;
@@ -110,11 +93,20 @@ public partial class MainWindow
     {
         _saveTrigger = false;
     }
+
+    private void TextBox_OnMouseWheel(object sender, MouseWheelEventArgs e)
+    {
+        if (Keyboard.Modifiers != ModifierKeys.Control) return;
+        if (sender is not TextBox textBox) return;
+        var fontSize = textBox.FontSize + (e.Delta > 0 ? 2 : -2);
+        if (fontSize > 10)
+        {
+            textBox.FontSize = fontSize;
+        }
+    }
 }
 
 public static class Commands
 {
-    public static readonly RoutedUICommand Save = new RoutedUICommand("Save", "Save", typeof(MainWindow));
-    //public static readonly RoutedUICommand Withdraw = new RoutedUICommand("Withdraw", "Withdraw", typeof(MainWindow));
-    //public static readonly RoutedUICommand Restore = new RoutedUICommand("Restore", "Restore", typeof(MainWindow));
+    public static readonly RoutedUICommand Save = new("Save", "Save", typeof(MainWindow));
 }
